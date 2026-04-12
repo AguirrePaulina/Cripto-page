@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Guía completa sobre criptomonedas: Bitcoin, blockchain, NFTs, trading y más">
+    <link rel="stylesheet" href="style.css">
+    <title>Criptomonedas | Guía Básica 2026</title>
+</head>
+<body>
+    <!-- Header con navegación sticky -->
+    <header class="main-header">
+        <div class="logo-container">
+            <img src="IMAGENES/crypto-coins.jpg.jfif" alt="Logo Criptomonedas" class="logo">
+            <h1 class="site-title">Criptomonedas</h1>
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="#funcionamiento" class="nav-link active">Funcionamiento</a></li>
+                <li><a href="#cripto" class="nav-link">¿Qué son?</a></li>
+                <li><a href="#ventajas" class="nav-link">Ventajas/Desventajas</a></li>
+                <li><a href="#mineria" class="nav-link">Minería</a></li>
+                <li><a href="#nft" class="nav-link">NFTs</a></li>
+                <li><a href="#blockchain" class="nav-link">Blockchain</a></li>
+                <li><a href="#stablecoins" class="nav-link">Stablecoins</a></li>
+                <li><a href="#volatilidad" class="nav-link">Volatilidad</a></li>
+                <li><a href="#trading" class="nav-link">Trading</a></li>
+                <li><a href="#futuro" class="nav-link">Futuro</a></li>
+            </ul>
+        </nav>
+        <div class="auth-buttons">
+            <button class="btn-login" onclick="openLoginModal()">Iniciar Sesión</button>
+        </div>
+    </header>
+
+    <!-- Modal de Login / Recuperación -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeLoginModal()">&times;</span>
+            
+            <div id="loginForm" class="auth-form">
+                <h2>Bienvenido de Vuelta</h2>
+                <p class="form-subtitle">Inicia sesión para acceder a tu cuenta</p>
+                <form onsubmit="handleLogin(event)">
+                    <div class="form-group">
+                        <label for="loginEmail">Correo Electrónico</label>
+                        <input type="email" id="loginEmail" placeholder="tu@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">Contraseña</label>
+                        <input type="password" id="loginPassword" placeholder="••••••••" required>
+                    </div>
+                    <div class="form-options">
+                        <label class="remember-me"><input type="checkbox"> Recordarme</label>
+                        <a href="#" class="forgot-link" onclick="showRecoveryForm()">¿Olvidaste tu contraseña?</a>
+                    </div>
+                    <button type="submit" class="btn-submit">Iniciar Sesión</button>
+                </form>
+                <div class="form-footer">
+                    <p>¿No tienes cuenta? <a href="#" onclick="showRegisterForm()">Regístrate</a></p>
+                </div>
+            </div>
+
+            <div id="recoveryForm" class="auth-form" style="display: none;">
+                <h2>Recuperar Contraseña</h2>
+                <p class="form-subtitle">Te enviaremos un enlace para restablecer tu contraseña</p>
+                <form onsubmit="handleRecovery(event)">
+                    <div class="form-group">
+                        <label for="recoveryEmail">Correo Electrónico</label>
+                        <input type="email" id="recoveryEmail" placeholder="tu@email.com" required>
+                    </div>
+                    <button type="submit" class="btn-submit">Enviar Enlace</button>
+                    <button type="button" class="btn-cancel" onclick="showLoginForm()">Volver al Login</button>
+                </form>
+            </div>
+
+            <div id="registerForm" class="auth-form" style="display: none;">
+                <h2>Crear Cuenta</h2>
+                <p class="form-subtitle">Únete a nuestra comunidad</p>
+                <form onsubmit="handleRegister(event)">
+                    <div class="form-group">
+                        <label for="registerName">Nombre Completo</label>
+                        <input type="text" id="registerName" placeholder="Juan Pérez" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="registerEmail">Correo Electrónico</label>
+                        <input type="email" id="registerEmail" placeholder="tu@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="registerPassword">Contraseña</label>
+                        <input type="password" id="registerPassword" placeholder="••••••••" required>
+                    </div>
+                    <button type="submit" class="btn-submit">Registrarse</button>
+                    <button type="button" class="btn-cancel" onclick="showLoginForm()">Volver al Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero-section">
+        <div class="hero-content">
+            <h2>El Futuro del Dinero Digital</h2>
+            <p>Descubre todo sobre las criptomonedas, blockchain y la revolución financiera descentralizada</p>
+            <a href="#funcionamiento" class="btn-primary">Comenzar Ahora</a>
+        </div>
+
+    </section>
+
+    <!-- ¿Cómo funcionan? -->
+    <section id="funcionamiento" class="content-section">
+        <div class="container">
+            <h2 class="section-title">¿Cómo funcionan las criptomonedas?</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <div class="icon">💰</div>
+                    <h3>Moneda Digital y Criptografía</h3>
+                    <p>Las criptomonedas son monedas digitales que utilizan criptografía para garantizar la seguridad. A diferencia de las monedas tradicionales, operan en una red descentralizada de computadoras, utilizando la tecnología blockchain.</p>
+                </div>
+                <div class="info-card">
+                    <div class="icon">🔗</div>
+                    <h3>Blockchain y Registro Compartido</h3>
+                    <p>El corazón de las criptomonedas es el blockchain. Es un registro contable compartido que asegura la integridad de las transacciones. Cada bloque contiene datos de transacciones y está enlazado al anterior, formando una cadena inmutable.</p>
+                </div>
+                <div class="info-card">
+                    <div class="icon">🌐</div>
+                    <h3>Alternativa Descentralizada</h3>
+                    <p>Las criptomonedas no están controladas por una entidad central, como los bancos. Esto las hace resistentes a la censura y permite transacciones globales sin intermediarios.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Las criptomonedas -->
+    <section id="cripto" class="content-section alt-bg">
+        <div class="container">
+            <h2 class="section-title">Las Criptomonedas</h2>
+            <div class="two-columns">
+                <div class="text-content">
+                    <p class="lead">Una criptomoneda es un activo digital que emplea cifrado criptográfico para garantizar su titularidad y asegurar la integridad de las transacciones.</p>
+                    <p>Además, controla la creación de unidades adicionales, evitando que alguien pueda hacer copias, similar a cómo protegemos una foto. Las criptomonedas no existen físicamente, pero sirven como moneda de intercambio, permitiendo transacciones instantáneas a través de Internet sin importar las fronteras. Estas monedas virtuales no están respaldadas por un banco central y su valor varía según la oferta y la demanda.</p>
+                    <h3>Algunos puntos claves:</h3>
+                    <ul class="feature-list">
+                        <li><strong>Tecnología Blockchain:</strong> las criptomonedas operan en una red descentralizada llamada blockchain. Cada transacción se registra en bloques enlazados, formando una cadena inmutable.</li>
+                        <li><strong>Transacciones P2P:</strong> A diferencia de las monedas tradicionales, las criptos permiten transacciones directas entre individuos sin intermediarios como bancos.</li>
+                        <li><strong>Ejemplos Destacables:</strong> Bitcoin, ether, BNB y USDT son algunas de las principales criptomonedas por capitalización de mercado.</li>
+                    </ul>
+                </div>
+                <div class="image-content">
+                    <img src="IMAGENES/criptomonedas-hero.jpg.jfif" alt="Criptomonedas" class="hero-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ventajas y Desventajas -->
+    <section id="ventajas" class="content-section">
+        <div class="container">
+            <h2 class="section-title">Ventajas y Desventajas de las Criptomonedas</h2>
+            <div class="pros-cons-grid">
+                <div class="pros-card">
+                    <h3>👍 Ventajas</h3>
+                    <ul>
+                        <li><strong>Transferencias más rápidas y económicas:</strong> las criptomonedas permiten transacciones instantáneas sin intermediarios, lo que reduce costos y tiempos.</li>
+                        <li><strong>Sistemas descentralizados:</strong> no colapsan en un punto único de falla, ya que están basadas en tecnología blockchain.</li>
+                        <li><strong>Mayor seguridad:</strong> el cifrado criptográfico protege las transacciones y la titularidad de los activos.</li>
+                        <li><strong>Accesibilidad global:</strong> cualquier persona con acceso a Internet puede usar criptomonedas.</li>
+                    </ul>
+                </div>
+                <div class="cons-card">
+                    <h3>👎 Desventajas</h3>
+                    <ul>
+                        <li><strong>Volatilidad de precios:</strong> las criptomonedas pueden experimentar cambios bruscos en su valor.</li>
+                        <li><strong>Consumo energético elevado:</strong> la minería de criptomonedas requiere mucha energía.</li>
+                        <li><strong>Uso en actividades ilegales:</strong> aunque no es exclusivo de las criptomonedas, su anonimato puede facilitar actividades ilícitas.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Minería -->
+    <section id="mineria" class="content-section alt-bg">
+        <div class="container">
+            <h2 class="section-title">La Minería de Criptomonedas</h2>
+            <div class="two-columns reverse">
+                <div class="image-content">
+                    <img src="IMAGENES/mining-setup.jpg.jfif" alt="Minería de criptomonedas" class="feature-image">
+                </div>
+                <div class="text-content">
+                    <p class="lead">La minería de criptomonedas es el proceso mediante el cual se verifican y registran las transacciones en una cadena de bloques.</p>
+                    <p>Los mineros, que son computadoras o hardware especializados, resuelven complejos acertijos matemáticos para agregar nuevos bloques a la cadena de bloques y, a cambio, reciben recompensas en criptomonedas.</p>
+                    <h3>¿Cómo funciona?</h3>
+                    <p><strong>Hashing de transacciones:</strong> las transacciones pendientes se envían a un pool llamado memory pool. Un minero recopila estas transacciones no confirmadas y las organiza en un bloque candidato. Luego, intenta convertir este bloque candidato en un bloque válido y confirmado. Para lograrlo, debe resolver un problema matemático complejo que requiere muchos recursos informáticos. Por cada bloque minado correctamente, el minero recibe una recompensa en criptomonedas recién creadas más las comisiones de transacción.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NFTs -->
+    <section id="nft" class="content-section">
+        <div class="container">
+            <h2 class="section-title">¿Qué son los NFT?</h2>
+            <div class="nft-content">
+                <p class="lead">Las siglas NFT significan Non-Fungible Token (token no fungible). Son activos digitales únicos asociados a archivos digitales mediante la tecnología blockchain.</p>
+                <p>A diferencia de las criptomonedas, no se pueden modificar ni intercambiar por otro con el mismo valor. Ejemplo: representan obras de arte digital únicas que se compran y venden en la cadena de bloques. En resumen, los NFT son como las dos caras de una moneda tecnológica: opuestos a las criptomonedas, pero igualmente valiosos.</p>
+                <h3>Uno de los casos de uso más interesantes para los NFT es en el ámbito del arte digital. Aquí te explico por qué:</h3>
+                <div class="nft-uses">
+                    <div class="nft-card">
+                        <div class="nft-icon">🎨</div>
+                        <h3>Coleccionables digitales</h3>
+                        <p>Los NFTs permiten a los artistas y creadores vender obras de arte digitales como activos únicos. Cada NFT representa una pieza específica y auténtica, lo que agrega valor y exclusividad.</p>
+                    </div>
+                    <div class="nft-card">
+                        <div class="nft-icon">🎵</div>
+                        <h3>Propiedad digital</h3>
+                        <p>Los NFTs pueden representar la propiedad de elementos digitales, como música, videos, juegos y metaversos. Por ejemplo, un NFT podría otorgar acceso exclusivo a una experiencia virtual o a contenido especial.</p>
+                    </div>
+                    <div class="nft-card">
+                        <div class="nft-icon">✓</div>
+                        <h3>Autenticidad y procedencia</h3>
+                        <p>Los NFTs ayudan a verificar la autenticidad y la procedencia de los activos digitales. Los compradores pueden rastrear la historia completa de un NFT, desde su creación hasta su venta actual.</p>
+                    </div>
+                    <div class="nft-card">
+                        <div class="nft-icon">🚀</div>
+                        <h3>Innovación y experimentación</h3>
+                        <p>Los NFTs están impulsando la exploración de nuevas formas de propiedad y creación en el mundo digital. Esto fomenta la innovación y la colaboración entre artistas y tecnólogos.</p>
+                    </div>
+                </div>
+                <p style="margin-top: 2rem; font-style: italic; color: #555;">En resumen, los NFTs están transformando la forma en que interactuamos con el arte y los activos digitales, brindando oportunidades emocionantes tanto para creadores como para coleccionistas.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blockchain -->
+    <section id="blockchain" class="content-section alt-bg">
+        <div class="container">
+            <h2 class="section-title">La Tecnología Blockchain</h2>
+            <div class="blockchain-showcase">
+                <div class="blockchain-image">
+                    <img src="IMAGENES/blockchain-tech.jpg.jfif" alt="Blockchain Technology" class="blockchain-img">
+                </div>
+                <div class="blockchain-content">
+                    <p class="lead">La tecnología blockchain es un registro digital descentralizado que almacena la propiedad de activos digitales.</p>
+                    <h3>Aquí tienes algunos puntos clave:</h3>
+                    <div class="blockchain-features">
+                        <div class="feature-item">
+                            <span class="feature-icon">🌐</span>
+                            <div>
+                                <h4>Distribución y descentralización</h4>
+                                <p>Un blockchain es un libro de contabilidad compartido que existe en una red de computadoras. No está controlado por una sola entidad, sino que se comparte entre nodos. Esto lo hace resistente a la censura y la manipulación.</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">🔒</span>
+                            <div>
+                                <h4>Inmutabilidad</h4>
+                                <p>Los datos almacenados en un blockchain no pueden modificarse. Cada transacción se agrupa en un bloque vinculado al anterior, formando una cadena. Una vez que se confirma, es irreversible.</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">👁️</span>
+                            <div>
+                                <h4>Transparencia y seguridad</h4>
+                                <p>Todas las transacciones son visibles y verificables. La criptografía garantiza la integridad de los datos. Por ejemplo, en la cadena de bloques de Bitcoin, todas las transacciones son públicas y permanentes.</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">🏥</span>
+                            <div>
+                                <h4>Aplicaciones más allá de las criptomonedas</h4>
+                                <p>Además de las criptomonedas, los blockchains se utilizan en áreas como pagos, ciberseguridad, atención médica y más.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stablecoins -->
+    <section id="stablecoins" class="content-section">
+        <div class="container">
+            <h2 class="section-title">Stablecoins</h2>
+            <div class="two-columns">
+                <div class="text-content">
+                    <p class="lead">Las monedas estables son criptomonedas cuyo valor está vinculado a otro activo, como una moneda fiduciaria (como el dólar estadounidense) o incluso materias primas como el oro.</p>
+                    <p>Su objetivo principal es mantener un valor estable y constante, respaldado por un activo de reserva. Estas stablecoins ofrecen una alternativa a la alta volatilidad de otras criptomonedas como Bitcoin y Ether, lo que las hace más predecibles y útiles para transacciones cotidianas.</p>
+                    <h3>Algunos ejemplos notables son:</h3>
+                    <ul class="feature-list">
+                        <li><strong>Tether (USDT):</strong> vinculada al dólar estadounidense en una proporción de 1:1, se utiliza principalmente para el comercio y como sustituto del dólar en las criptobolsas.</li>
+                        <li><strong>Dai (DAI):</strong> operada por el sistema MakerDAO, el Dai es una stablecoin criptocolateralizada respaldada por una mezcla de otras criptomonedas depositadas en bóvedas de contratos inteligentes.</li>
+                        <li><strong>Binance USD (BUSD):</strong> aprobada por el Departamento de Servicios Financieros del Estado de Nueva York, está respaldada por dinero fiduciario (dólar estadounidense) en una relación 1:1.</li>
+                        <li><strong>Estándar Paxos (PAX):</strong> otra stablecoin vinculada al dólar, enfatiza el cumplimiento normativo y la protección del consumidor.</li>
+                    </ul>
+                </div>
+                <div class="image-content">
+                    <img src="IMAGENES/stablecoins.jfif" alt="Stablecoins" class="feature-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Volatilidad -->
+    <section id="volatilidad" class="content-section alt-bg">
+        <div class="container">
+            <h2 class="section-title">La Volatilidad en Criptomonedas</h2>
+            <div class="volatility-container">
+                <div class="volatility-image">
+                    <img src="IMAGENES/volatilidad-cripto.jpg.jfif" alt="Volatilidad de las criptomonedas" class="volatility-img">
+                </div>
+                <div class="volatility-content">
+                    <p class="lead">La volatilidad en el mercado de criptomonedas se refiere a las fluctuaciones rápidas y marcadas en los precios de estas monedas digitales.</p>
+                    <p>A diferencia de los mercados financieros tradicionales, donde los movimientos de precios suelen ser menos pronunciados, las criptomonedas pueden experimentar fuertes oscilaciones en cuestión de horas o incluso minutos. Esta volatilidad puede ser tanto una oportunidad como un riesgo para los inversores. Por un lado, puede generar cuantiosas ganancias si se opera en el momento adecuado. Por otro, también puede resultar en pérdidas significativas. En resumen, entender la volatilidad es crucial para tomar decisiones informadas y gestionar los riesgos al operar con criptomonedas.</p>
+                    <h3>Para protegerte de la volatilidad en las criptomonedas, considera estas estrategias:</h3>
+                    <div class="strategies-grid">
+                        <div class="strategy-card">
+                            <h4>📊 Diversificación</h4>
+                            <p>Invierte en diferentes criptomonedas y otros activos para reducir el riesgo.</p>
+                        </div>
+                        <div class="strategy-card">
+                            <h4>🎯 Stop Loss y Take Profit</h4>
+                            <p>Establece niveles de precio para vender automáticamente si el valor cae (stop loss) o sube (take profit). Esto limita las pérdidas y asegura ganancias.</p>
+                        </div>
+                        <div class="strategy-card">
+                            <h4>💎 HODL con Cautela</h4>
+                            <p>“HODL” (mantener) es popular en cripto, pero sé consciente de los riesgos. Evalúa regularmente tus inversiones y ajusta según las condiciones del mercado.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trading -->
+    <section id="trading" class="content-section">
+        <div class="container">
+            <h2 class="section-title">El Trading</h2>
+            <div class="trading-steps">
+                <div class="trading-card">
+                    <span class="trading-number">01</span>
+                    <h3>Educación</h3>
+                    <p>Aprende sobre los mercados financieros, análisis técnico, gestión de riesgos y estrategias de trading.</p>
+                </div>
+                <div class="trading-card">
+                    <span class="trading-number">02</span>
+                    <h3>Elección del mercado</h3>
+                    <p>Decide en qué mercado deseas operar (acciones, divisas, criptomonedas, etc.).</p>
+                </div>
+                <div class="trading-card">
+                    <span class="trading-number">03</span>
+                    <h3>Plataforma de trading</h3>
+                    <p>Elige una plataforma confiable para ejecutar tus operaciones.</p>
+                </div>
+                <div class="trading-card">
+                    <span class="trading-number">04</span>
+                    <h3>Práctica</h3>
+                    <p>Abre una cuenta demo para practicar sin riesgo antes de operar con dinero real.</p>
+                </div>
+                <div class="trading-card">
+                    <span class="trading-number">05</span>
+                    <h3>Gestión de riesgos</h3>
+                    <p>Define tu tolerancia al riesgo y establece límites para tus operaciones.</p>
+                </div>
+            </div>
+            <p style="margin-top: 2rem; text-align: center; max-width: 800px; margin-left: auto; margin-right: auto;">
+                El trading es una estrategia de inversión que se enfoca en comprar y vender activos (como acciones, divisas, materias primas o criptomonedas) en el corto plazo para aprovechar las tendencias o cambios en el precio. Los traders analizan gráficos bursátiles y utilizan diversas herramientas para tomar decisiones informadas sobre cuándo entrar o salir del mercado.
+            </p>
+        </div>
+    </section>
+
+    <!-- Futuro -->
+    <section id="futuro" class="content-section alt-bg">
+        <div class="container">
+            <h2 class="section-title">¿Cuál es el Futuro de las Criptomonedas?</h2>
+            <div class="future-content">
+                <p class="lead">El futuro de las criptomonedas sigue siendo incierto, pero cada vez se aceptan más en el mercado.</p>
+                <p>A pesar de los desafíos y las caídas recientes, parece que han llegado para quedarse. Los emprendedores tecnológicos están impulsando cambios en este mercado, y su evolución continúa a un ritmo vertiginoso. Si bien hay detractores, también hay quienes ven oportunidades en este espacio. En cualquier caso, es importante que las empresas e inversores comprendan a fondo estos activos, sus beneficios y riesgos, y estén preparados para enfrentar cualquier escenario.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-content">
+            <p>&copy; 2026 Criptomonedas. Información educativa.</p>
+            <p>Investiga siempre antes de invertir.</p>
+        </div>
+    </footer>
+
+    <!-- Botón volver arriba -->
+    <button id="scrollTop" class="scroll-top" onclick="scrollToTop()">↑</button>
+
+    <script>
+        // Modal Login Functions
+        function openLoginModal() { document.getElementById('loginModal').style.display = 'flex'; document.body.style.overflow = 'hidden'; }
+        function closeLoginModal() { document.getElementById('loginModal').style.display = 'none'; document.body.style.overflow = 'auto'; }
+        function showRecoveryForm() { document.getElementById('loginForm').style.display = 'none'; document.getElementById('recoveryForm').style.display = 'block'; }
+        function showRegisterForm() { document.getElementById('loginForm').style.display = 'none'; document.getElementById('registerForm').style.display = 'block'; }
+        function showLoginForm() { document.getElementById('loginForm').style.display = 'block'; document.getElementById('recoveryForm').style.display = 'none'; document.getElementById('registerForm').style.display = 'none'; }
+        function handleLogin(e) { e.preventDefault(); alert('¡Inicio de sesión exitoso! (Demo)'); closeLoginModal(); }
+        function handleRecovery(e) { e.preventDefault(); const email = document.getElementById('recoveryEmail').value; alert(`Se ha enviado un enlace de recuperación a: ${email}`); showLoginForm(); }
+        function handleRegister(e) { e.preventDefault(); alert('¡Registro exitoso! Bienvenido a CriptoWorld'); closeLoginModal(); }
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+
+        // Scroll top button
+        window.addEventListener('scroll', () => {
+            const scrollTopBtn = document.getElementById('scrollTop');
+            if (window.pageYOffset > 300) scrollTopBtn.classList.add('show');
+            else scrollTopBtn.classList.remove('show');
+        });
+        function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
+
+        // Active navigation
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 200) current = section.getAttribute('id');
+            });
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === current) link.classList.add('active');
+            });
+        });
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('loginModal');
+            if (event.target == modal) closeLoginModal();
+        }
+    </script>
+</body>
+</html>
